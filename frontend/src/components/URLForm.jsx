@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Link as LinkIcon, Copy, ExternalLink, CheckCircle } from 'lucide-react';
 
-const API_BASE_URL = 'http://127.0.0.1:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const URLForm = () => {
   const [longUrl, setLongUrl] = useState('');
