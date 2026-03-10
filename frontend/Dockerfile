@@ -1,21 +1,27 @@
-FROM node:20-alpine as build
+FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# accept env variable
+# pass environment variable during build
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 
-COPY frontend/package.json frontend/package-lock.json ./
+# install dependencies
+COPY package.json package-lock.json ./
 RUN npm install
 
-COPY frontend/ ./
+# copy source code
+COPY . .
 
+# build the react app
 RUN npm run build
 
-# production server
+
+# production image
 FROM nginx:alpine
+
 COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
