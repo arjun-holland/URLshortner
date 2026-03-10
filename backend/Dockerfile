@@ -2,7 +2,7 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
-# Set environment variables
+# Environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
@@ -10,14 +10,14 @@ ENV PYTHONUNBUFFERED 1
 RUN apt-get update && apt-get install -y gcc
 
 # Install python dependencies
-COPY backend/requirements.txt /app/
+COPY requirements.txt /app/
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copy project
-COPY backend/ /app/
+COPY . /app/
 
 # Expose port
 EXPOSE 8000
 
-# Run gunicorn
+# Run server
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]
