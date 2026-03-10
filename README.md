@@ -55,6 +55,9 @@ docker-compose up --build
 - `GET /api/analytics/<short_code>`
   - Action: Fetches the analytics statistics for the generated code.
 
+
+## Live Link : https://urlshortner-1-ie66.onrender.com
+
 ## OUTPUT
 <img width="1919" height="1077" alt="image" src="https://github.com/user-attachments/assets/ab4b9c2a-3d42-4a39-a9c7-27429e62b0bc" />
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/63719053-8f45-46c2-8f32-5c9ab0af3858" />
